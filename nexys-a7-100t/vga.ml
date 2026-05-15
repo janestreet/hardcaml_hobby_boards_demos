@@ -91,7 +91,7 @@ let test_video_timing cycles =
   let module Sim = Cyclesim.With_interface (Clocking) (Vga.O) in
   let scope = Scope.create ~flatten_design:true () in
   let sim = Sim.create ~config:Cyclesim.Config.trace_all (f scope) in
-  let waves, sim = Waveform.create sim in
+  let waves, sim = Cyclesim.Waveform.create sim in
   let inputs = Cyclesim.inputs sim in
   inputs.clear := Bits.vdd;
   Cyclesim.cycle sim;
